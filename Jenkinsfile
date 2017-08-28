@@ -4,16 +4,14 @@ node {
     stage 'Build'
         git url: 'https://github.com/gsrihariprasad123/gradle-demo.git'
 
-  stage "Build/Analyse/Test"
+  
     sh "./gradlew clean build"
-    archiveUnitTestResults()
-    archiveCheckstyleResults()
     
-    stage "Generate AMI"
-    sh "./gradlew boxfuseFuse"
+   
+    sh "./gradlew gradle-demo"
     
-    stage name: "Deploy to AWS", concurrency: 1
-    sh "./gradlew boxfuseRun"
+    
+    sh "./gradlew gradle-demo"
 
 
 }
